@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ca">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GearLab - Simulador d'engranatges</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="theme-dark" data-theme="dark">
+    <header class="app-header">
+      <h1>GearLab</h1>
+      <div class="header-controls">
+        <div class="primary-actions">
+          <button id="toggle-sim">Inicia simulació</button>
+          <button
+            type="button"
+            class="info-button"
+            id="quick-info"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="quick-info-popup"
+          >
+            <span aria-hidden="true">i</span>
+            <span class="sr-only">Mostra instruccions ràpides</span>
+          </button>
+          <button id="chain-mode">Mode cadena</button>
+          <button id="clear-all">Esborra tot</button>
+        </div>
+        <button
+          type="button"
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-pressed="true"
+          aria-label="Canvia entre mode clar i mode fosc"
+        >
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+          <span class="sr-only">Commuta mode de color</span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <div
+        class="info-popup hidden"
+        id="quick-info-popup"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="quick-info-heading"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <div class="info-popup-content">
+          <header class="info-popup-header">
+            <h3 id="quick-info-heading">Instruccions ràpides</h3>
+            <button type="button" class="info-popup-close" id="quick-info-close">
+              Tanca
+            </button>
+          </header>
+          <ul>
+            <li>Dibuixa un cercle amb el ratolí per crear un engranatge.</li>
+            <li>Arrossega un engranatge per moure'l pel canvas.</li>
+            <li>Clica un engranatge per editar-lo o esborrar-lo.</li>
+            <li>Els engranatges que es toquen es connecten automàticament.</li>
+            <li>Activa el mode cadena per connectar engranatges separats.</li>
+          </ul>
+        </div>
+      </div>
+      <section class="canvas-wrapper">
+        <canvas id="gear-canvas"></canvas>
+        <div id="gear-editor" class="gear-editor hidden">
+          <form>
+            <h3>Editar engranatge</h3>
+            <label>
+              Nombre de dents
+              <input type="number" id="gear-teeth" min="4" step="1" />
+            </label>
+            <label>
+              RPM
+              <input type="number" id="gear-rpm" step="1" />
+            </label>
+            <label class="toggle">
+              Direcció de gir
+              <div class="toggle-buttons">
+                <button type="button" data-direction="counterclockwise">&larr;</button>
+                <button type="button" data-direction="clockwise" class="active">&rarr;</button>
+              </div>
+            </label>
+            <div class="editor-actions">
+              <button type="button" id="delete-gear" class="danger">Elimina</button>
+              <button type="button" id="close-editor">Tanca</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <div data-i18n="footer.license" data-i18n-type="html">
+          Generador Aleatori d'Exàmens © 2025 per
+          <a href="mailto:aagust11@xtec.cat">aagust11@xtec.cat</a> amb l'assistència de la IA està llicenciat sota
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.
+        </div>
+        <div class="footer-meta">
+          <div data-i18n="footer.version">Versió 1 · Octubre 2025</div>
+
+          <div class="footer-icons">
+            <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="Creative Commons" />
+            <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="Reconeixement" />
+            <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="No Comercial" />
+            <img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="Compartir Igual" />
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
